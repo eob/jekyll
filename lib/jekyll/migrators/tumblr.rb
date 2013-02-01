@@ -96,7 +96,7 @@ module Jekyll
       end
       date = Date.parse(post['date']).to_s
       title = Nokogiri::HTML(title).text
-      slug = title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+      slug = title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '').gsub(':', '')
       slug = slug.slice(0..200) if slug.length > 200
       header_title = title.gsub(':', '&#58;')
       {
