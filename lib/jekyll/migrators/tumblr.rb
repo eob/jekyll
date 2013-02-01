@@ -98,11 +98,12 @@ module Jekyll
       title = Nokogiri::HTML(title).text
       slug = title.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
       slug = slug.slice(0..200) if slug.length > 200
+      header_title = title.gsub(':', '&#58;')
       {
         :name => "#{date}-#{slug}.#{format}",
         :header => {
           "layout" => "post",
-          "title" => title,
+          "title" => header_title,
           "tags" => post["tags"],
         },
         :content => content,
